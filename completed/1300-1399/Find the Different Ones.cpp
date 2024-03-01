@@ -5,6 +5,10 @@
 #include <algorithm>
 using namespace std;
 
+// Precompute the index the nearest left different element first.
+// Then for each query, if prev[right] < left, then return -1 -1,
+// other return prev[right]+1 and right+1.
+
 int main() {
     int tc;
     cin >> tc;
