@@ -1,6 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+// Transform array a to b from the number with the smallest value first,
+// for each idx i, traverse j to left and right to get j where a[j] == b[i].
+// During the traversal, 
+// 1. if we encounter a[j] == b[i], break and we have a ans,
+// 2. if we encounter number larger than b[i], then ans is no, as the whole range will be replaced by this larger number,
+// 3. if we encounter smaller number, then ans is no, as we will change the already fixed smaller number.
+// After the traversal, we need to simulate and replace [left, right] to b[i],
+// and if after traversal a[i] != b[i], then the ans is no.
+
 int main() {
     int tc;
     cin >> tc;
