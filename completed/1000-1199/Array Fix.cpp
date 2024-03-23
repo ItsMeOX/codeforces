@@ -2,6 +2,15 @@
 using namespace std;
 
 
+// Use greedy,
+// if nums[i] > 9: 
+// split if 
+// nums[i].first_digit <= nums[i].second_digit and 
+// nums[i].first_digit <= nums[i-1] and
+// nums[i].second_digit <= nums[i-1] 
+
+// Check nums[i] >= nums[i-1] for every i > 0.
+
 int main() {
     int tc;
     cin >> tc;
