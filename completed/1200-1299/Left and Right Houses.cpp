@@ -2,6 +2,9 @@
 using namespace std;
 
 
+// Use prefix sum for each index i and check if left and right array satisfies the two condtions.
+// Get the least distance among all the positions that satisfiy the condition.
+
 int main() {
     int tc;
     cin >> tc;
