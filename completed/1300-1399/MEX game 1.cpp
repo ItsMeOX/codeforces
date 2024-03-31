@@ -2,6 +2,10 @@
 using namespace std;
 
 
+// If count(num) >= 2, then Alice always can pick it.
+// Alice only cannot pick the second num with count(num) == 1 from sorted nums.
+// If count(num) == 0, it is a candidate answer also.
+
 int main() {
     int tc;
     cin >> tc;
