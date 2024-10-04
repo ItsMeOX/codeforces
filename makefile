@@ -1,10 +1,10 @@
 all: compile link run
 
 compile:
-	g++ -c test.cpp
+	g++ -c main.cpp
 
 link:
-	g++ test.o -o test
+	g++ main.o -o main
 
 run:
-	./test.exe
+	./main.exe

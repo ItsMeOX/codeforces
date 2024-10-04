@@ -1,6 +1,3 @@
 .cph
-template.cpp
-test.cpp
-test.exe
-test.o
-test.py
+main.exe
+main.o
