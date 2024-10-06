@@ -14,6 +14,8 @@ void printIterable(const T& container) {
 #define DEBUG(var) std::cout << #var << " : " << var << std::endl
 #define DEBUGV(var) cout << #var << " : "; printIterable(var)
 
+#define ll long long
+
 int main() {
     
 

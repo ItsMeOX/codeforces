@@ -17,29 +17,28 @@ void printIterable(const T& container) {
 #define ll long long
 
 int main() {
-    int n; 
-    cin >> n;
-    vector<int> a(n);
+    int tc, t=0;
+    cin >> tc;
+    int N;
 
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
+    while (t++ < tc) {
+        cin >> N;
+        vector<int> arr(N);
 
-    ll res = LLONG_MAX;
-
-    function<void(int, ll, ll)> dfs = [&](int i, ll left, ll right) -> void {
-        if (i == n) {
-            res = min(res, abs(left - right));
-            return ;
+        for (int i = 0; i < N; i++) {
+            cin >> arr[i];
         }
 
-        dfs(i+1, left + a[i], right);
-        dfs(i+1, left, right + a[i]);
-    };
 
-    dfs(0, 0, 0);
 
-    cout << res;
+        cout << "Case #" << t << ": " << res << '\n';
+    }
 
     return 0;
 }
+
+// (17 + x) % 7 == 0
+
+6 3 x 2 5 4
+
+// (20 + x) % 10 == 0
