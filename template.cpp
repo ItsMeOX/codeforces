@@ -16,8 +16,18 @@ void printIterable(const T& container) {
 
 #define ll long long
 
-int main() {
-    
+const int mod = 1e9 + 7;
 
+void solve() {
+    
+}
+
+int main() {
+    int TC = 1;
+    cin >> TC;
+    while (TC--) {
+        solve();
+    }
+    
     return 0;
 }

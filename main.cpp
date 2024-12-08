@@ -16,29 +16,73 @@ void printIterable(const T& container) {
 
 #define ll long long
 
-int main() {
-    int tc, t=0;
-    cin >> tc;
-    int N;
-
-    while (t++ < tc) {
-        cin >> N;
-        vector<int> arr(N);
-
-        for (int i = 0; i < N; i++) {
-            cin >> arr[i];
-        }
-
-
-
-        cout << "Case #" << t << ": " << res << '\n';
-    }
-
-    return 0;
+const int mod = 1e9 + 7;
+int m = 0, n = 0;
+set<pair<int, int>> seen;
+vector<string> arr;
+bool isOut(int r, int c) {
+    return r < 0 || r >= m || c < 0 || c >= n;
 }
 
-// (17 + x) % 7 == 0
+void solve() {
+    string s;
+    unordered_map<char, vector<pair<int, int>>> mp;
+    while (getline(cin, s)) {
+        for (int c = 0; c < s.length(); c++) {
+            if (s[c] != '.') {
+                mp[s[c]].push_back({m, c});
+            }
+        }
+        m++;
+        arr.push_back(s);
+    }
+    n = arr[0].length();
 
-6 3 x 2 5 4
+    int res = 0;
+    for (auto& [sig, pos] : mp) {
+        for (int i = 0; i < pos.size(); i++) {
+            for (int j = i+1; j < pos.size(); j++) {
+                int dr = pos[j].first - pos[i].first;
+                int dc = pos[j].second - pos[i].second;
+                int nr1 = pos[i].first - dr, nc1 = pos[i].second - dc;
+                int nr2 = pos[j].first + dr, nc2 = pos[j].second + dc;
+                if (!seen.count({pos[i].first, pos[i].second})) {
+                    seen.insert({pos[i].first, pos[i].second});
+                    res++;
+                }
+                if (!seen.count({pos[j].first, pos[j].second})) {
+                    seen.insert({pos[j].first, pos[j].second});
+                    res++;
+                }
+                while (!isOut(nr1, nc1)) {
+                    if (!seen.count({nr1, nc1})) {
+                        seen.insert({nr1, nc1});
+                        res++;
+                    }
+                    nr1 -= dr;
+                    nc1 -= dc;
+                }
+                while (!isOut(nr2, nc2)) {
+                    if (!seen.count({nr2, nc2})) {
+                        seen.insert({nr2, nc2});
+                        res++;
+                    }
+                    nr2 += dr;
+                    nc2 += dc;
+                }
+            }
+        }
+    }
 
-// (20 + x) % 10 == 0
+    cout << res;
+}
+
+int main() {
+    int TC = 1;
+    // cin >> TC;
+    while (TC--) {
+        solve();
+    }
+    
+    return 0;
+}
