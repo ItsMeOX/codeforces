@@ -1,5 +1,8 @@
-// Keep picking the largest valued chest, 
-// if the next chest + cur > k, then stop and add value to current chest.
+// If gcd(all) == 1, return 0.
+// If arr[n-1] = gcd(n, arr[n-1]) == 1, return 1.
+// If arr[n-2] = gcd(n-1, arr[n-2]) == 1, return 2.
+// Else because gcd(n, n-1) == 1, 
+// so we transform arr[n-1] and arr[n-2], and return 3.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -22,25 +25,34 @@ void printIterable(const T& container) {
 const int mod = 1e9 + 7;
 
 void solve() {
-    int n, k;
-    cin >> n >> k;
-
+    int n;
+    cin >> n;
     vector<int> arr(n);
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
 
-    sort(arr.begin(), arr.end());
-    reverse(arr.begin(), arr.end());
-    ll cur = 0;
+    int g = 0;
     for (int i = 0; i < n; i++) {
-        if (cur + arr[i] > k) {
-            break;
-        }
-        cur += arr[i];
+        g = __gcd(g, arr[i]);
     }
 
-    cout << k - cur << '\n';
+    if (g == 1) {
+        cout << 0 << '\n';
+        return;
+    }
+
+    if (__gcd(g, __gcd(n, arr[n-1])) == 1) {
+        cout << 1 << '\n';
+        return;
+    }
+
+    if (__gcd(g, __gcd(n-1, arr[n-2])) == 1) {
+        cout << 2 << '\n';
+        return;
+    }
+
+    cout << 3 << '\n';
 }
 
 int main() {
