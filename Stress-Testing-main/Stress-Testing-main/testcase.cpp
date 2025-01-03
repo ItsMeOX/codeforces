@@ -14,18 +14,20 @@ inline ll rnd(ll l = 0, ll r = 1E9)
 
 void testcase()
 {
-    ll t = rnd(1, 10);
+    ll t = 20; // rnd(1, 10);
     cout << t << endl;
     while(t--)
     {
-        ll n = rnd(1, 100000000);
-        ll m = rnd(1, n);
-        ll k = rnd(1, 200000);
-        cout << n << " " << m << " " << k << endl;
-        for (int i = 0; i < k; i++) {
-            cout << rnd(1, n) << " ";
-        }
-        cout << '\n';
+        ll g = rnd(1, 1e16);
+        cout << g << endl;
+        // for (int i = 0; i < len; i++) {
+        //     cout << rnd(1, 1e9) << ' ';
+        // }
+        // cout << '\n';
+        // for (int i = 0; i < n; i++) {
+        //     cout << rnd(1, 1e9) << " ";
+        // }
+        // cout << '\n';
     }
 }
 
